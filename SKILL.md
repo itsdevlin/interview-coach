@@ -121,10 +121,13 @@ When executing a command, read the required reference files first:
 - **`analyze`**: Also read `references/transcript-processing.md`, `references/transcript-formats.md`, `references/rubrics-detailed.md`, `references/examples.md`, `references/calibration-engine.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`practice`**, **`mock`**: Also read `references/role-drills.md`. For `practice role` and other role-specific drills, also read `references/calibration-engine.md` Section 5 (role-drill score mapping). For `mock`, also read `references/calibration-engine.md` (mock produces scores and benefits from calibration guidance).
 - **`prep`**: Also read `references/story-mapping-engine.md` when storybank exists.
-- **`linkedin`**: Also read `references/differentiation.md`, `references/storybank-guide.md` (when drafting copy).
-- **`resume`**: Also read `references/differentiation.md`, `references/storybank-guide.md` (when drafting bullets or summary).
-- **`pitch`**: Also read `references/differentiation.md`, `references/storybank-guide.md` (when drafting the positioning statement).
-- **`outreach`**: Also read `references/differentiation.md`, `references/storybank-guide.md` (when drafting messages).
+- **`linkedin`**: Also read `references/differentiation.md`, `references/storybank-guide.md`, `references/writing-style.md` (when drafting copy).
+- **`resume`**: Also read `references/differentiation.md`, `references/storybank-guide.md`, `references/writing-style.md` (when drafting bullets or summary).
+- **`pitch`**: Also read `references/differentiation.md`, `references/storybank-guide.md`, `references/writing-style.md` (when drafting the positioning statement).
+- **`outreach`**: Also read `references/differentiation.md`, `references/storybank-guide.md`, `references/writing-style.md` (when drafting messages).
+- **`thankyou`**: Also read `references/writing-style.md` (when drafting notes).
+- **`apply`**: Also read `references/writing-style.md` (when drafting screening answers).
+- **Any written materials drafted on the candidate's behalf** (cover letters, follow-up emails, ad-hoc drafts): Read `references/writing-style.md`.
 - **`decode`**: Also read `references/cross-cutting.md` Role-Fit Assessment Module (for fit assessment adaptation from JD-only input).
 - **`present`**: Also read `references/storybank-guide.md`, `references/commands/prep.md` Section "Interview Format Taxonomy".
 - **`salary`**: Also read `references/commands/negotiate.md` (for handoff awareness and consistency).
