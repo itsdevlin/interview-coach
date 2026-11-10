@@ -508,10 +508,10 @@ The Output Schema above is the *analysis*. When the candidate is prepping for a 
 ---
 
 # Answers to land
-*These are spines, not scripts. Deliver the point, land the bold line — that's the earned secret, and dropping it is the failure mode.*
+*These are scripts, not spines. Read them, then riff — land the bold line, that's the earned secret, and dropping it is the failure mode.*
 
 ### [Likely question]
-> [The tight answer in the candidate's voice — told, not pitched. **Bold the earned-secret / one-thing-to-land line.**]
+> [The full answer, written out word-for-word in the candidate's voice — told, not pitched. Not an outline or bullet beats: the candidate riffs off a script, and an outline gives them nothing to riff from. **Bold the earned-secret / one-thing-to-land line.**]
 
 *[Optional italic delivery note: a follow-up to have ready, a compression cue, or a keep-it-light reminder. Never put coaching asides in the header — they go here.]*
 
@@ -529,7 +529,7 @@ The Output Schema above is the *analysis*. When the candidate is prepping for a 
 #### Build principles (these are the corrections that must not recur)
 
 1. **Clean headers.** No coaching asides in section headers (no "(the make-or-break — replaces X)"). Headers name the thing; delivery notes live as *italic sub-lines* under the answer.
-2. **An answer under every likely question — not just TMAY and the make-or-break.** Every row in the at-a-glance table has a full spine below it.
+2. **An answer under every likely question — not just TMAY and the make-or-break.** Every row in the at-a-glance table has a full, written-out script below it.
 3. **At-a-glance table stays at the top**, above the full answers, as the pre-call reminder layer.
 4. **Bold the earned-secret / one-thing-to-land line** in every answer so it's visible at a glance. Landing that line is the whole point (deploy-under-pressure is the recurring failure mode).
 5. **Told, not sold.** Positioning answers (TMAY, why-[company]) lead with genuine narrative, not a value-prop label ("I'm a [role] who's done X twice…") and don't hard-close with a pitch ("that's exactly why I want this"). Authenticity-reading interviewers (career recruiters, people leaders) screen *against* the polished register. **Apply the full Candidate Answer Voice rules in `references/coaching-voice.md`** — including: no self-diminishing framing (land intent through where they're strongest, never "I'm least effective at…"); no unearned superlatives or relative-size claims ("a key piece" ≠ "the biggest piece"); no truth-prefaces ("the honest answer is…") on top of the hedge-opener ban; and don't add clauses that name the fear you're neutralizing.
