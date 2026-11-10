@@ -60,8 +60,6 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
 ## Quick Start
 
-### Option 1: Claude Code (recommended)
-
 1. Clone the repo:
 
 ```bash
@@ -71,40 +69,15 @@ cd interview-coach
 
 Or [download it as a ZIP](https://github.com/itsdevlin/interview-coach/archive/refs/heads/main.zip) and unzip.
 
-2. Activate the coach by renaming the skill file:
+2. Open the folder in Claude Code or Codex and say `kickoff`.
 
-```bash
-mv SKILL.md CLAUDE.md
-```
+That's it. All of the coach's instructions live in `AGENTS.md`. Codex reads that file directly, and Claude Code loads it through `CLAUDE.md` (a one-line `@AGENTS.md` import), so both agents always run the same version and a `git pull` is all an update takes.
 
-3. Open the folder in Claude Code and say `kickoff`.
-
-Requires any paid Claude plan. Also works with Claude Code (terminal), Cursor, or any environment with file system access.
-
-### Option 2: OpenAI Codex
-
-1. Clone the repo:
-
-```bash
-git clone https://github.com/itsdevlin/interview-coach.git
-cd interview-coach
-```
-
-Or [download it as a ZIP](https://github.com/itsdevlin/interview-coach/archive/refs/heads/main.zip) and unzip.
-
-2. Activate the coach by renaming the skill file:
-
-```bash
-mv SKILL.md AGENTS.md
-```
-
-3. Open the folder in Codex and say `kickoff`.
-
-Requires any paid ChatGPT plan.
+Requires a paid Claude plan (Claude Code) or a paid ChatGPT plan (Codex). Also works in Cursor or any agent environment with file system access.
 
 ---
 
-For both options, the coach will ask for your resume, target role, and timeline — then build your profile, assess your starting point, and give you a prioritized action plan. Everything saves automatically to `coaching_state.md` so you pick up where you left off next session.
+The coach will ask for your resume, target role, and timeline — then build your profile, assess your starting point, and give you a prioritized action plan. Everything saves automatically to `coaching_state.md` so you pick up where you left off next session.
 
 Tip: create a `materials/` folder and drop your resume in it before `kickoff`. As you work, the coach adds a subfolder per company (see [Your Materials Folder](#your-materials-folder)). Both `materials/` and `coaching_state.md` are gitignored, so your personal data never gets committed.
 
@@ -412,7 +385,8 @@ Choose during `kickoff`. You can switch later.
 
 ```text
 interview-coach/
-├── SKILL.md                            # Core skill — rename to CLAUDE.md to activate
+├── AGENTS.md                           # The coach: everything an agent running in this repo needs
+├── CLAUDE.md                           # One line, @AGENTS.md (so Claude Code loads it)
 ├── README.md                           # This file
 ├── LICENSE                             # MIT License
 ├── VERSIONS.md                         # Version roadmap (upstream history)
