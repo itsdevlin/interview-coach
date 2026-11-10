@@ -71,7 +71,7 @@ Or [download it as a ZIP](https://github.com/itsdevlin/interview-coach/archive/r
 
 2. Open the folder in Claude Code or Codex and say `kickoff`.
 
-That's it. All of the coach's instructions live in `AGENTS.md`. Codex reads that file directly, and Claude Code loads it through `CLAUDE.md` (a one-line `@AGENTS.md` import), so both agents always run the same version and a `git pull` is all an update takes.
+That's it. All of the coach's instructions live in `AGENTS.md`. `CLAUDE.md` and `CODEX.md` each contain one line, `@AGENTS.md`, so both agents always run the same version and a `git pull` is all an update takes.
 
 Requires a paid Claude plan (Claude Code) or a paid ChatGPT plan (Codex). Also works in Cursor or any agent environment with file system access.
 
@@ -386,7 +386,8 @@ Choose during `kickoff`. You can switch later.
 ```text
 interview-coach/
 ├── AGENTS.md                           # The coach: everything an agent running in this repo needs
-├── CLAUDE.md                           # One line, @AGENTS.md (so Claude Code loads it)
+├── CLAUDE.md                           # One line: @AGENTS.md
+├── CODEX.md                            # One line: @AGENTS.md
 ├── README.md                           # This file
 ├── LICENSE                             # MIT License
 ├── VERSIONS.md                         # Version roadmap (upstream history)
