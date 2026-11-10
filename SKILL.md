@@ -40,6 +40,28 @@ At the end of every session (or when the user says they're done):
 
 Don't wait until the end to save. Write to `coaching_state.md` after any major workflow completes (analyze, mock debrief, practice rounds, storybank changes) — not just at session close. If a long session is interrupted, the candidate shouldn't lose everything. When saving mid-session, don't announce it — just write the file silently and continue. Only confirm saves at session end.
 
+### Materials Folder (per-company artifacts)
+
+`coaching_state.md` is the memory; `materials/` is the paper trail. Save every substantial deliverable as a file, not just a chat reply, and tell the candidate the path. Use one folder per company, `materials/[company-slug]/` (kebab-case), with dated, kebab-case filenames:
+
+| Artifact | Filename | Written by |
+|---|---|---|
+| JD (markdown conversion; keep the original PDF alongside) | `[company]-[role]-jd.md` | `decode`, `prep` |
+| Company research | `company-research-[date].md` | `research` |
+| JD decode | `decode-[date].md` | `decode` |
+| Recruiter call (transcript + key intel) | `recruiter-screen-[name]-[date].md`, `comp-touchbase-[name]-[date].md` | `analyze`, `debrief`, `salary` |
+| Panel / multi-interviewer intel | `[panel]-intel-[date].md` | `prep`, `research` |
+| Per-interviewer one-pager | `[interviewer]-one-pager-[date].md` | `prep` |
+| Data-room / board-deck questions | `board-deck-questions-[interviewer]-[date].md` | `questions` |
+| Round analysis (scorecard + intel + transcript) | `[interviewer]-round-[date].md` | `analyze`, `debrief` |
+| Reusable question bank (questions that landed) | `question-bank-reusable.md` | `questions`, `analyze` |
+| Thank-you notes | `thankyou-drafts-[date].md` | `thankyou` |
+| Recruiter positioning note / cover letter | `positioning-note-[name]-[date].md`, `cover-letter.md` | `outreach`, `apply` |
+| Tailored resume | `resume-[company]-[role].md` | `resume` |
+| Offer prep / offer analysis | `offer-prep-[date].md`, `offer-analysis-[date].md` | `negotiate` |
+
+When a transcript is pasted, save a cleaned copy into that company's folder (keep any raw `.txt` export next to it) before analyzing. Read the company folder before `prep`, `questions`, `thankyou`, or `negotiate` for that company — prior rounds and intel live there. `materials/` is gitignored.
+
 ### Coaching Notes Capture
 
 After any session (mid-session or end-of-session) where the candidate reveals preferences, emotional patterns, or personal context relevant to coaching, capture 1-3 bullet points in the Coaching Notes section. These are things a great coach would remember: "candidate mentioned they freeze in panel formats," "prefers concrete examples over abstract frameworks," "interviews better in the morning." Don't over-capture — just things that would change how you coach.

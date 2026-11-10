@@ -1,6 +1,6 @@
 # Interview Coach
 
-A Claude Code-based interview coach that covers the full job search lifecycle — from JD analysis and resume optimization through mock interviews to post-offer negotiation. 23 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
+A Claude Code-based interview coach that covers the full job search lifecycle — from JD analysis and resume optimization through mock interviews to post-offer negotiation. 25 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
 
 Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
@@ -27,6 +27,10 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 **Interview lifecycle** — Company research, role-specific prep briefs with interviewer intelligence, same-day post-interview debrief, outcome tracking that correlates practice scores with real results, and post-offer negotiation coaching with exact scripts.
 
 **Interview intelligence** — The system learns from your real interview experiences. Every transcript, debrief, and recruiter feedback adds to a personalized knowledge base: question patterns across companies, what works and what doesn't for you specifically, and feedback-outcome correlations. Intelligence data has temporal decay — stale data is flagged, not silently relied on.
+
+**Per-interviewer one-pagers** — For every named interviewer, `prep` builds a delivery-ready one-pager: how that person reads, the bar that decides the round, an at-a-glance table of likely questions with the one line to land, full written-out answer scripts in your voice, and questions matched to that interviewer's lane. It's the doc you read in the ten minutes before the call.
+
+**Per-company materials folder** — Every substantial deliverable (research, JD decodes, recruiter-call transcripts, one-pagers, round analyses, thank-you drafts, offer analysis) is saved as a dated file in `materials/[company]/`, so each company's loop is a readable paper trail, not just chat history. See [Your Materials Folder](#your-materials-folder).
 
 **Session continuity** — A persistent `coaching_state.md` file tracks your storybank, scores, patterns, drill progression, interview loops, interview intelligence, and calibration state across sessions. Pick up where you left off, weeks later. Saves are automatic.
 
@@ -61,11 +65,11 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/noamseg/interview-coach-skill.git
-cd interview-coach-skill
+git clone https://github.com/itsdevlin/interview-coach.git
+cd interview-coach
 ```
 
-Or [download it as a ZIP](https://github.com/noamseg/interview-coach-skill/archive/refs/heads/main.zip) and unzip.
+Or [download it as a ZIP](https://github.com/itsdevlin/interview-coach/archive/refs/heads/main.zip) and unzip.
 
 2. Activate the coach by renaming the skill file:
 
@@ -82,11 +86,11 @@ Requires any paid Claude plan. Also works with Claude Code (terminal), Cursor, o
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/noamseg/interview-coach-skill.git
-cd interview-coach-skill
+git clone https://github.com/itsdevlin/interview-coach.git
+cd interview-coach
 ```
 
-Or [download it as a ZIP](https://github.com/noamseg/interview-coach-skill/archive/refs/heads/main.zip) and unzip.
+Or [download it as a ZIP](https://github.com/itsdevlin/interview-coach/archive/refs/heads/main.zip) and unzip.
 
 2. Activate the coach by renaming the skill file:
 
@@ -101,6 +105,8 @@ Requires any paid ChatGPT plan.
 ---
 
 For both options, the coach will ask for your resume, target role, and timeline — then build your profile, assess your starting point, and give you a prioritized action plan. Everything saves automatically to `coaching_state.md` so you pick up where you left off next session.
+
+Tip: create a `materials/` folder and drop your resume in it before `kickoff`. As you work, the coach adds a subfolder per company (see [Your Materials Folder](#your-materials-folder)). Both `materials/` and `coaching_state.md` are gitignored, so your personal data never gets committed.
 
 ---
 
@@ -405,11 +411,14 @@ Choose during `kickoff`. You can switch later.
 ## Repository Structure
 
 ```text
-interview-coach-skill/
+interview-coach/
 ├── SKILL.md                            # Core skill — rename to CLAUDE.md to activate
 ├── README.md                           # This file
 ├── LICENSE                             # MIT License
-├── coaching_state.md                   # Created on first kickoff (persistent memory, auto-saved)
+├── VERSIONS.md                         # Version roadmap (upstream history)
+├── releases/                           # Release notes (upstream history)
+├── coaching_state.md                   # Created on first kickoff (persistent memory, auto-saved, gitignored)
+├── materials/                          # Your resume + one folder per company (gitignored; see below)
 └── references/
     ├── commands/                       # Per-command workflows (loaded on demand)
     │   ├── kickoff.md
@@ -447,8 +456,64 @@ interview-coach-skill/
     ├── story-mapping-engine.md         # Portfolio-optimized story mapping with fit scoring
     ├── calibration-engine.md           # Scoring drift detection, root cause tracking, success patterns
     ├── challenge-protocol.md           # Five-lens challenge framework (Level 5 only): assumption audit, blind spot scan, pre-mortem, devil's advocate, strengthening path
+    ├── coaching-voice.md               # Coach's voice + Candidate Answer Voice (how drafted answers should sound)
+    ├── writing-style.md                # Style rules for anything written on your behalf (resume, outreach, thank-yous)
+    ├── evidence-sourcing.md            # Source tiers for company claims
+    ├── mode-detection.md               # Detects intent and multi-step flows
+    ├── coaching-state-schema.md        # coaching_state.md format
+    ├── state-update-triggers.md        # What gets written to state, and when
+    ├── schema-migration.md             # Upgrades older coaching_state.md files
+    ├── archival-rules.md               # Keeps coaching_state.md from growing unbounded
     └── examples.md                     # Worked examples: scored answers, triage, rewrites, system design analysis
 ```
+
+---
+
+## Your Materials Folder
+
+`coaching_state.md` is the coach's memory. `materials/` is your paper trail: everything the coach produces for a company is saved as a dated markdown file in that company's folder, so before any round you can open one folder and see the whole loop so far. The research, round transcripts, and one-pagers end up being the most useful files in the whole system.
+
+A full loop ends up looking like this (`acme` is a stand-in):
+
+```text
+materials/
+├── Your Name Resume.pdf
+└── acme/
+    ├── Acme VP Product Position Description.pdf     # Original JD / recruiter spec (you drop this in)
+    ├── acme-vp-product-jd.md                         # JD converted to markdown so the coach can read it
+    ├── company-research-2026-07-08.md                # research: basics, leadership, product, comp reality check, sources + confidence
+    ├── decode-2026-07-08.md                          # decode: 6-lens JD read, fit verdict, question seeds, recruiter questions
+    ├── recruiter-screen-jane-doe-2026-07-10.md       # Recruiter call: key intel, ASR name fixes, full transcript
+    ├── comp-touchbase-jane-doe-2026-07-31.md         # Shorter recruiter calls: headlines, open items, transcript
+    ├── question-bank-reusable.md                     # Your questions that landed, and who to use each with
+    ├── sam-lee-one-pager-2026-07-24.md               # prep: per-interviewer one-pager (read right before the call)
+    ├── sam-lee-round-2026-07-24.md                   # analyze: scorecard, what changed, peak moments, gaps, new intel, transcript
+    ├── panel-b-intel-2026-08-25.md                   # Intel on a multi-person panel: each interviewer, format warnings
+    ├── board-deck-questions-ceo-2026-09-01.md        # Questions built from a data room / board deck you were given
+    ├── thankyou-drafts-2026-08-28.md                 # One varied note per interviewer + if-advancing / if-rejected follow-ups
+    ├── offer-prep-2026-09-10.md                      # negotiate: before the letter — what to send, who to call, title strategy
+    ├── offer-analysis-2026-09-15.md                  # negotiate: the written offer — math, letter vs. verbal, ranked counter, call scorecard
+    └── NDA, offer letter, data-room PDFs              # Anything else they send you
+```
+
+What each file is for:
+
+| File | Made by | What's in it | When you open it |
+|---|---|---|---|
+| `*-jd.md` + original PDF | `decode` / `prep` | The role spec as text (keep both the recruiter version and the company posting if they differ) | Before tailoring anything |
+| `company-research-[date].md` | `research` | Company basics, leadership history, founder story, recruiter read, comp check, sourced and confidence-rated | Before the first call |
+| `decode-[date].md` | `decode` | Headline finding, 6-lens analysis, fit assessment, "why this company" angle, likely questions, priority moves | When deciding whether to apply or how to pitch |
+| `recruiter-screen-*` / `*-touchbase-*` | `analyze` / `debrief` | What the recruiter actually said (transcript), new intel vs. what you knew, open items | Before every later round; recruiter-endorsed framing goes into one-pagers |
+| `[interviewer]-one-pager-[date].md` | `prep` | How they read, the bar for this round, at-a-glance table, **full answer scripts in your voice**, your questions for them | 10 minutes before the call |
+| `[interviewer]-round-[date].md` | `analyze` | Scorecard across 5 dimensions + hire signal, what changed in the loop, peak moments, gaps, new intel, calibration vs. your self-read, transcript | Right after the round, and before the next one |
+| `*-intel-[date].md` | `prep` / `research` | Profiles of each panelist, how the panel splits, news that changed since last round | Before panels |
+| `question-bank-reusable.md` | `questions` / `analyze` | Questions that got a "great question" reaction, grouped by who to ask | Building "your questions" for any later round |
+| `board-deck-questions-*` | `questions` | Numbers pulled from shared materials and the sharp questions they raise | Late-stage conversations with execs |
+| `thankyou-drafts-[date].md` | `thankyou` | One note per interviewer, each with a different callback | Same day as the round |
+| `positioning-note-*`, `cover-letter.md`, `resume-[company]-[role].md` | `outreach` / `apply` / `resume` | Tailored written materials | When sending them |
+| `offer-prep-[date].md`, `offer-analysis-[date].md` | `negotiate` | Pre-offer moves, then the full offer breakdown and ranked counter | Offer stage |
+
+Not every company gets every file. An early-stage look might just be a JD, research, and a decode, while a full loop fills the folder. If you paste a transcript, the coach saves a cleaned copy in the company folder (with any raw `.txt` export next to it) before analyzing it, and it reads the folder before `prep`, `questions`, `thankyou`, or `negotiate` so earlier rounds inform the next one.
 
 ---
 
@@ -499,7 +564,9 @@ Open an issue or PR with:
 
 ## Credits
 
-Created by [Noam Segal](https://www.linkedin.com/in/noamsegal/).
+Created by [Noam Segal](https://www.linkedin.com/in/noamsegal/) ([original repo](https://github.com/noamseg/interview-coach-skill)).
+
+This fork is maintained by Sean Devlin. It adds per-interviewer one-pagers with written-out answer scripts, Candidate Answer Voice rules, writing-style routing for drafted materials, challenge-protocol guardrails, and the per-company `materials/` workflow.
 
 ---
 
